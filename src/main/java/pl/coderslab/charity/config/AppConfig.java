@@ -18,9 +18,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         String[] STATIC_RESOURCE = {"/","classpath:/","classpath:/META-INF/resources/", "classpath:/META-INF/resources/webjars/",
                 "classpath:/resources/", "classpath:/static/", "classpath:/public/"};
 
-        if (!registry.hasMappingForPattern("/**")) {
             registry.addResourceHandler("/**").addResourceLocations(STATIC_RESOURCE);
-        }
+            registry.addResourceHandler("/donation/**").addResourceLocations(STATIC_RESOURCE);
     }
 
 }

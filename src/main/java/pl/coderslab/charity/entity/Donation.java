@@ -1,5 +1,7 @@
 package pl.coderslab.charity.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
@@ -31,9 +33,11 @@ public class Donation {
     @NotNull
     @Pattern(regexp = "^\\d{2}-\\d{3}$", message = "{pl.coderslab.charity.donation.zipcode.pattern}")
     private String zipCode;
-    @NotBlank(message = "{pl.coderslab.charity.donation.pickupdate.notempty}")
+    private String phone;
+    @NotNull(message = "{pl.coderslab.charity.donation.pickupdate.notempty}")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-    @NotBlank(message = "{pl.coderslab.charity.donation.pickuptime.notempty}")
+    @NotNull(message = "{pl.coderslab.charity.donation.pickuptime.notempty}")
     private LocalTime pickUpTime;
     private String pickUpComment;
     private LocalDateTime createdAt;
@@ -93,6 +97,14 @@ public class Donation {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public LocalDate getPickUpDate() {

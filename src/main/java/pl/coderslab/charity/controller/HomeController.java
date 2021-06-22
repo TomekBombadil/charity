@@ -31,7 +31,7 @@ public class HomeController {
         return "index";
     }
 
-    @ModelAttribute("institutions")
+    @ModelAttribute("allInstitutions")
     public List<Institution> getInstitutions() {
         return institutionService.getAll();
     }

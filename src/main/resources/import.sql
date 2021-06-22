@@ -2,6 +2,7 @@ insert into institutions(name, description) values('Fundacja "Dbam o Zdrowie"','
 insert into institutions(name, description) values('Fundacja "A kogo"','Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.');
 insert into institutions(name, description) values('Fundacja “Dla dzieci"','Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.');
 insert into institutions(name, description) values('Fundacja “Bez domu”','Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania');
+insert into institutions(name, description) values('Fundacja “Pomoc humanitarna”','Cel i misja: Pomoc dla ofiar klęsk żywiołowych');
 
 insert into categories(name) values('ubrania');
 insert into categories(name) values('zabawki');

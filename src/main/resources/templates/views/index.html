@@ -37,7 +37,7 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em th:text="${donatedBagsCount}">13</em>
+            <em th:text="${donatedBagsCount}">-999</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -45,7 +45,7 @@
         </div>
 
         <div class="stats--item">
-            <em th:text="${donationsCount}">5</em>
+            <em th:text="${donationsCount}">-999</em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -103,7 +103,7 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <th:block th:each="institution, iStat : ${institutions}">
+            <th:block th:each="institution, iStat : ${allInstitutions}">
                 <th:block th:if="${iStat.odd}" th:utext="'<li>'" />
                     <div class="col">
                         <div class="title" th:text="${institution.name}">Fundacja "Dbam o Zdrowie"</div>
@@ -111,7 +111,7 @@
                             rodzin.
                         </div>
                     </div>
-                <th:block th:if="${iStat.even}" th:utext="'</li>'" />
+                <th:block th:if="${iStat.even or iStat.last}" th:utext="'</li>'" />
             </th:block>
         </ul>
 
