@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="pl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{css/style.css}"/>
+</head>
+<body>
+<div th:fragment="header-anonymous">
+    <nav class="container container--70">
+        <ul class="nav--actions">
+            <li><span sec:authorize="isAuthenticated()" th:text="${'Witaj ' + #authentication.name}" class="btn btn--small btn--without-border">POWITANIE</span></li>
+            <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn btn--small btn--without-border">Wyloguj</a></li>
+            <li><a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="btn btn--small btn--without-border">Zaloguj</a></li>
+            <li><a sec:authorize="!isAuthenticated()" th:href="@{/registration}" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+        </ul>
+
+        <ul>
+            <li><a th:href="@{/}" class="btn btn--without-border active">Start</a></li>
+            <li><a th:href="@{/donation/new}" class="btn btn--without-border active">Przekaż dary</a></li>
+            <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
+            <li><a href="#" class="btn btn--without-border">O nas</a></li>
+            <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
+            <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+        </ul>
+    </nav>
+
+</div>
+</body>
+</html>

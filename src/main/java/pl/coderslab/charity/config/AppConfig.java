@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
@@ -20,6 +21,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
             registry.addResourceHandler("/**").addResourceLocations(STATIC_RESOURCE);
             registry.addResourceHandler("/donation/**").addResourceLocations(STATIC_RESOURCE);
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/403page").setViewName("403page");
     }
 
 }

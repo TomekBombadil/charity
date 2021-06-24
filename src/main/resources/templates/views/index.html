@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pl">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="pl">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,20 +9,8 @@
 </head>
 <body>
 <header class="header--main-page">
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>
-            <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
-        </ul>
-
-        <ul>
-            <li><a href="#" class="btn btn--without-border active">Start</a></li>
-            <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
-            <li><a href="#" class="btn btn--without-border">O nas</a></li>
-            <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
-        </ul>
-    </nav>
+    <div sec:authorize="isAuthenticated()" th:replace="fragments/header-authenticated :: header-authenticated"></div>
+    <div sec:authorize="!isAuthenticated()" th:replace="fragments/header-anonymous :: header-anonymous"></div>
 
     <div class="slogan container container--90">
         <div class="slogan--item">
@@ -111,6 +99,8 @@
                             rodzin.
                         </div>
                     </div>
+                <th:block th:if="${iStat.last}"
+                          th:utext="'<div class=\'col\'><div style=\'color:white;\'class=\'title\'>&nbsp</div><div style=\'color:white;\' class=\'subtitle\'>&nbsp</div></div>'" />
                 <th:block th:if="${iStat.even or iStat.last}" th:utext="'</li>'" />
             </th:block>
         </ul>

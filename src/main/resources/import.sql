@@ -30,3 +30,10 @@ insert into donations_categories values(5,5);
 insert into donations_categories values(6,1);
 insert into donations_categories values(6,3);
 insert into donations_categories values(6,5);
+
+
+INSERT INTO users (account_non_expired, account_non_locked, credentials_non_expired, email, enabled, password, username) VALUES (1, 1, 1, 'user@mail.pl', 1, '$2y$06$l5gyWAmZ//mTID17F8rirOuxSytjLaSr9zZwmNC5JDfuF9kEL1Lsm', 'user');
+
+INSERT INTO authorities (authority, user, admin) values ('ROLE_USER',1,0), ('ROLE_ADMIN',0,1);
+
+INSERT INTO users_authorities(user_id, authorities_id) values(1, 1), (1, 2);
