@@ -26,14 +26,12 @@ import java.util.Locale;
 public class RegistrationController {
 
     private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
     private final AuthorityService authorityService;
     private ApplicationEventPublisher eventPublisher;
 
-    public RegistrationController(UserService userService, PasswordEncoder passwordEncoder
+    public RegistrationController(UserService userService
             , AuthorityService authorityService, ApplicationEventPublisher eventPublisher) {
         this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
         this.authorityService = authorityService;
         this.eventPublisher = eventPublisher;
     }
