@@ -1,13 +1,11 @@
 package pl.coderslab.charity.controller;
 
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-import pl.coderslab.charity.entity.Authority;
 import pl.coderslab.charity.entity.RegistrationForm;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
