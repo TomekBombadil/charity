@@ -23,7 +23,6 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         setDefaultFailureUrl("/login?error=true");
         super.onAuthenticationFailure(request, response, exception);
 
-        Locale locale = localeResolver.resolveLocale(request);
 
         String errorMessage = "Bad credentials";
 

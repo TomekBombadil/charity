@@ -57,18 +57,17 @@ public class RegistrationController {
     }
 
     @GetMapping(value = "/confirm")
-    public String confirmRegistration(WebRequest webRequest, Model model, @RequestParam("token") String token) {
-        Locale locale = webRequest.getLocale();
+    public String confirmRegistration(Model model, @RequestParam("token") String token) {
         VerificationToken verificationToken = userService.getVerificationToken(token);
         if (verificationToken == null) {
             model.addAttribute("message", "Invalid token");
-            return "redirect:/badUser.html";
+            return "redirect:/badUser";
         }
 
         User user = verificationToken.getUser();
         if (verificationToken.getExpiryDate().isBefore(LocalDateTime.now())) {
             model.addAttribute("message", "Token expired");
-            return "redirect:/badUser.html";
+            return "redirect:/badUser";
         }
         user.setEnabled(true);
         userService.saveRegisteredUser(user);
