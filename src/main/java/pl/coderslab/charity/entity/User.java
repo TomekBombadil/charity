@@ -24,6 +24,8 @@ public class User implements UserDetails {
     private boolean credentialsNonExpired;
 
     public User() {
+        super();
+        this.enabled = false;
     }
 
     public User(String username, String email, String password, List<Authority> authorities) {
@@ -31,7 +33,7 @@ public class User implements UserDetails {
         this.email = email;
         this.password = password;
         this.authorities = authorities;
-        this.enabled = true;
+        this.enabled = false;
         this.accountNonExpired = true;
         this.accountNonLocked = true;
         this.credentialsNonExpired = true;

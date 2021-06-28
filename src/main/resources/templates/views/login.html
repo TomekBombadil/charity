@@ -17,6 +17,7 @@
 <div th:if="${error}">
     Logowanie nieudane. Sprawdź poprawność nazwy użytkownika i hasła.
 </div>
+<div th:if="${param.error != null}" th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}">ERROR</div>
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
