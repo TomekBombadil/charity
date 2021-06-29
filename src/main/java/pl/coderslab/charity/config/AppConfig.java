@@ -21,6 +21,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
             registry.addResourceHandler("/**").addResourceLocations(STATIC_RESOURCE);
             registry.addResourceHandler("/donation/**").addResourceLocations(STATIC_RESOURCE);
+            registry.addResourceHandler("/password/**").addResourceLocations(STATIC_RESOURCE);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package pl.coderslab.charity.validation;
 
+import org.springframework.security.access.method.P;
+import pl.coderslab.charity.entity.PasswordForm;
 import pl.coderslab.charity.entity.RegistrationForm;
 
 import javax.validation.ConstraintValidator;
@@ -15,7 +17,11 @@ public class PasswordsMatchValidator implements ConstraintValidator<PasswordsMat
 
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
-        RegistrationForm registrationForm = (RegistrationForm) o;
-        return registrationForm.getPassword().equals(registrationForm.getPasswordConfirmation());
+        if(o instanceof RegistrationForm) {
+            RegistrationForm registrationForm = (RegistrationForm) o;
+            return registrationForm.getPassword().equals(registrationForm.getPasswordConfirmation());
+        }
+        PasswordForm passwordForm = (PasswordForm) o;
+        return passwordForm.getPassword().equals(passwordForm.getPasswordConfirmation());
     }
 }

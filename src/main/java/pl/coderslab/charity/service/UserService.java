@@ -6,6 +6,7 @@ import pl.coderslab.charity.entity.RegistrationForm;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
 import pl.coderslab.charity.error.UserAlreadyExistException;
+import pl.coderslab.charity.error.UserNotExistException;
 import pl.coderslab.charity.repository.UserRepository;
 import pl.coderslab.charity.repository.VerificationTokenRepository;
 
@@ -34,7 +35,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    private boolean emailExist(String email) {
+    public boolean emailExist(String email) {
         return userRepository.findByEmail(email).isPresent();
     }
 
@@ -53,5 +54,13 @@ public class UserService {
     public void createVerificationToken(User user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
         verificationTokenRepository.save(myToken);
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(()->{throw new UserNotExistException("User not exists: " + email + "!");});
+    }
+
+    public User getById(long id) {
+        return userRepository.findById(id).orElseThrow(() -> {throw new UserNotExistException("User not exists: " + id + "!");});
     }
 }
